@@ -5,6 +5,7 @@ package application;
  * @author Peter Rutschmann
  * @version 13.09.2018
  */
+@SuppressWarnings("LossyEncoding")
 public class Calculator {
 	private double leistung;
 	private double spannung;
@@ -49,7 +50,19 @@ public class Calculator {
 		 */
 	}
 	
-	/* Hier die Methoden mit den Formlen hinzufügen
+	/* Hier die Methoden mit den Formlen hinzufï¿½gen
 	 */
+
+	public double uAusPundI(double p, double i) {
+		return p/i ;
+	}
+
+	public double uAusRundI(double r, double i) {
+		return r*i ;
+	}
+
+	public double uAusPundR(double p, double r) {
+		return Math.sqrt(p*r) ;
+	}
 	
 }
