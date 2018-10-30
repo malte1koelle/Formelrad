@@ -53,6 +53,7 @@ public class Calculator {
 	/* Hier die Methoden mit den Formlen hinzuf�gen
 	 */
 
+	// U berechnen
 	public double uAusPundI(double p, double i) {
 		return p/i ;
 	}
@@ -64,5 +65,43 @@ public class Calculator {
 	public double uAusPundR(double p, double r) {
 		return Math.sqrt(p*r) ;
 	}
-	
+
+	// R berechnen
+	public double rAusUundP(double u, double p){
+		return (u*u)/p;
+	}
+
+	public double rAusPundI(double p, double i){
+		return p/(i*i);
+	}
+
+	public double rAusUundI(double u, double i){
+		return u/i;
+	}
+
+	// I berechnen
+	public double iAusPundR(double p, double r){
+		return Math.sqrt(p/r);
+	}
+
+	public double iAusPundU(double p, double u){
+		return p/u;
+	}
+
+	public double iAusUundR(double u, double r){
+		return u/r;
+	}
+
+	// P berechnen
+	public double pAusUundR(double u, double r){
+		return (u*u)/r;
+	}
+
+	public double pAusUundI(double u, double i){
+		return u * i;
+	}
+
+	public double pAusRundI(double r, double i){
+		return r*(i*i);
+	}
 }
