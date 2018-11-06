@@ -10,7 +10,11 @@ public class Calculator {
 	private double spannung;
 	private double strom;
 	private double widerstand;
-	
+
+
+	public Calculator() {
+	}
+
 	public Calculator(double leistung, double spannung, double strom, double widerstand) {
 		super();
 		this.leistung = leistung;
@@ -47,9 +51,22 @@ public class Calculator {
 		/* Hier auf Grund der vorhanden Werte entscheiden
 		 * welche Methode unten aufgerufen werden muss.
 		 */
+
 	}
 	
-	/* Hier die Methoden mit den Formlen hinzufügen
+	/* Hier die Methoden mit den Formlen hinzufï¿½gen
 	 */
+
+	public double pAusUundR(double u, double r){
+		return (u * u) / r;
+	}
+
+	public double pAusUundI(double u, double i){
+		return u * i;
+	}
+
+	public double pAusRundI(double r, double i){
+		return  r * (i * i);
+	}
 	
 }
