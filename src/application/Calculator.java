@@ -65,10 +65,32 @@ public class Calculator {
 	}
 
 	public void calculate() {
-		/* Hier auf Grund der vorhanden Werte entscheiden
-		 * welche Methode unten aufgerufen werden muss.
-		 */
-
+		System.out.println(this.toString());
+		if(leistung != 0 && spannung != 0){
+			strom = iAusPundU(leistung, spannung);
+			widerstand = rAusUundP(spannung, leistung);
+		}
+		else if(leistung != 0 && strom != 0){
+			spannung = uAusPundI(leistung, strom);
+			widerstand = rAusPundI(leistung, strom);
+		}
+		else if(leistung != 0 && widerstand != 0){
+			spannung = uAusPundR(leistung, widerstand);
+			strom = iAusPundR(leistung, strom);
+		}
+		else if(spannung != 0 && strom != 0){
+			leistung = pAusUundI(spannung, strom);
+			widerstand = rAusUundI(spannung, strom);
+		}
+		else if(spannung != 0 && widerstand != 0){
+			leistung = pAusUundR(spannung, widerstand);
+			strom = iAusUundR(spannung, widerstand);
+		}
+		else if(strom != 0 && widerstand != 0){
+			leistung = pAusRundI(widerstand, strom);
+			spannung = uAusRundI(widerstand, strom);
+		}
+		System.out.println(this.toString());
 	}
 	
 	/* Hier die Methoden mit den Formlen hinzuf�gen
