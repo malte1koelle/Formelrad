@@ -91,25 +91,25 @@ public class Main extends Application {
 			btnBerechnen.setOnAction(e -> {
 				int counter = 0;
 				Calculator calculator = new Calculator();
-				if(!txLeistung.getText().isEmpty()){
+				if(!txLeistung.getText().isEmpty() && isNumeric(txLeistung.getText())){
 					calculator.setLeistung(Double.parseDouble(txLeistung.getText()));
 					counter++;
 				}
-				if(!txSpannung.getText().isEmpty()) {
+				if(!txSpannung.getText().isEmpty() && isNumeric(txSpannung.getText())) {
 					calculator.setSpannung(Double.parseDouble(txSpannung.getText()));
 					counter++;
 				}
-				if(!txStrom.getText().isEmpty()) {
+				if(!txStrom.getText().isEmpty() && isNumeric(txStrom.getText())) {
 					calculator.setStrom(Double.parseDouble(txStrom.getText()));
 					counter++;
 				}
-				if(!txWiderstand.getText().isEmpty()) {
+				if(!txWiderstand.getText().isEmpty() && isNumeric(txWiderstand.getText())) {
 					calculator.setWiderstand(Double.parseDouble(txWiderstand.getText()));
 					counter++;
 				}
 
 				if(counter != 2){
-					error.setText("Fill out exactly 2 fields!");
+					error.setText("Fill out exactly 2 fields with numeric values!");
 				}
 				else{
 					error.setText("");
@@ -135,5 +135,18 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public static boolean isNumeric(String str)
+	{
+		try
+		{
+			double d = Double.parseDouble(str);
+		}
+		catch(NumberFormatException nfe)
+		{
+			return false;
+		}
+		return true;
 	}
 }
