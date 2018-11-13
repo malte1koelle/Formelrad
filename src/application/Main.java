@@ -1,6 +1,7 @@
 package application;
 
 import java.io.FileInputStream;
+import java.text.DecimalFormat;
 
 import javafx.application.Application;
 import javafx.scene.paint.Color;
@@ -113,10 +114,12 @@ public class Main extends Application {
 				else{
 					error.setText("");
 					calculator.calculate();
-					txLeistung.setText(Double.toString(calculator.getLeistung()));
-					txSpannung.setText(Double.toString(calculator.getSpannung()));
-					txStrom.setText(Double.toString(calculator.getStrom()));
-					txWiderstand.setText(Double.toString(calculator.getWiderstand()));
+					DecimalFormat f = new DecimalFormat("###0.00");
+
+					txLeistung.setText(f.format(calculator.getLeistung()));
+					txSpannung.setText(f.format(calculator.getSpannung()));
+					txStrom.setText(f.format(calculator.getStrom()));
+					txWiderstand.setText(f.format(calculator.getWiderstand()));
 				}
 			});
 
