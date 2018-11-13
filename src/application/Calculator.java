@@ -40,6 +40,22 @@ public class Calculator {
 		return widerstand;
 	}
 
+	public void setLeistung(double leistung) {
+		this.leistung = leistung;
+	}
+
+	public void setSpannung(double spannung) {
+		this.spannung = spannung;
+	}
+
+	public void setStrom(double strom) {
+		this.strom = strom;
+	}
+
+	public void setWiderstand(double widerstand) {
+		this.widerstand = widerstand;
+	}
+
 	@Override
 	public String toString() {
 		return "Calculator [leistung=" + leistung + 

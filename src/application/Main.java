@@ -3,6 +3,7 @@ package application;
 import java.io.FileInputStream;
 
 import javafx.application.Application;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -34,67 +35,89 @@ public class Main extends Application {
 			imageView.setPreserveRatio(true);
 			root.getChildren().add(imageView);
 
+			Label error = new Label("");
+			error.relocate(10, 280);
+			error.setTextFill(Color.web("#c70a0a"));
+			root.getChildren().add(error);
+
 			Label lbleistung = new Label("Leistung:");
-			lbleistung.relocate(10, 285);
+			lbleistung.relocate(10, 300);
 			lbleistung.setFont(Font.font(15));
 			root.getChildren().add(lbleistung);
 
 			TextField txLeistung = new TextField();
-			txLeistung.relocate(100, 285);
+			txLeistung.relocate(100, 300);
 			txLeistung.setFont(Font.font("Verdana", 15));
 			root.getChildren().add(txLeistung);
 
 			Label lblSpannung = new Label("Spannung:");
-			lblSpannung.relocate(10, 325);
+			lblSpannung.relocate(10, 340);
 			lblSpannung.setFont(Font.font(15));
 			root.getChildren().add(lblSpannung);
 
 			TextField txSpannung = new TextField();
-			txSpannung.relocate(100, 325);
+			txSpannung.relocate(100, 340);
 			txSpannung.setFont(Font.font("Verdana", 15));
 			root.getChildren().add(txSpannung);
 
 			Label lblStrom = new Label("Strom:");
-			lblStrom.relocate(10, 365);
+			lblStrom.relocate(10, 380);
 			lblStrom.setFont(Font.font(15));
 			root.getChildren().add(lblStrom);
 
 			TextField txStrom = new TextField();
-			txStrom.relocate(100, 365);
+			txStrom.relocate(100, 380);
 			txStrom.setFont(Font.font("Verdana", 15));
 			root.getChildren().add(txStrom);
 
 			Label lblWiderstand = new Label("Widerstand:");
-			lblWiderstand.relocate(10, 405);
+			lblWiderstand.relocate(10, 420);
 			lblWiderstand.setFont(Font.font(15));
 			root.getChildren().add(lblWiderstand);
 
 			TextField txWiderstand = new TextField();
-			txWiderstand.relocate(100, 405);
+			txWiderstand.relocate(100, 420);
 			txWiderstand.setFont(Font.font("Verdana", 15));
 			root.getChildren().add(txWiderstand);
 
 			Button btnBerechnen = new Button();
-			btnBerechnen.relocate(100, 445);
+			btnBerechnen.relocate(100, 460);
 			btnBerechnen.setText("Berechnen");
 			root.getChildren().add(btnBerechnen);
+
+
 			
 			btnBerechnen.setOnAction(e -> {
-				Calculator myCalculator = new Calculator(
-						Double.parseDouble(txLeistung.getText()),
-						Double.parseDouble(txSpannung.getText()),
-						Double.parseDouble(txStrom.getText()),
-						Double.parseDouble(txWiderstand.getText()));
-				System.out.print("Vorher:  ");
-				System.out.println(myCalculator.toString());
-				myCalculator.calculate();
-				System.out.print("Nachher: ");
-				System.out.println(myCalculator.toString());
-					
-				txLeistung.setText(Double.toString(myCalculator.getLeistung()));
-				txSpannung.setText(Double.toString(myCalculator.getSpannung()));
-				txStrom.setText(Double.toString(myCalculator.getStrom()));
-				txWiderstand.setText(Double.toString(myCalculator.getWiderstand()));
+				int counter = 0;
+				Calculator calculator = new Calculator();
+				if(!txLeistung.getText().isEmpty()){
+					calculator.setLeistung(Double.parseDouble(txLeistung.getText()));
+					counter++;
+				}
+				if(!txSpannung.getText().isEmpty()) {
+					calculator.setSpannung(Double.parseDouble(txSpannung.getText()));
+					counter++;
+				}
+				if(!txStrom.getText().isEmpty()) {
+					calculator.setStrom(Double.parseDouble(txStrom.getText()));
+					counter++;
+				}
+				if(!txWiderstand.getText().isEmpty()) {
+					calculator.setWiderstand(Double.parseDouble(txWiderstand.getText()));
+					counter++;
+				}
+
+				if(counter != 2){
+					error.setText("Fill out exactly 2 fields!");
+				}
+				else{
+					error.setText("");
+					calculator.calculate();
+					txLeistung.setText(Double.toString(calculator.getLeistung()));
+					txSpannung.setText(Double.toString(calculator.getSpannung()));
+					txStrom.setText(Double.toString(calculator.getStrom()));
+					txWiderstand.setText(Double.toString(calculator.getWiderstand()));
+				}
 			});
 
 			Scene scene = new Scene(root, 330, 490);
